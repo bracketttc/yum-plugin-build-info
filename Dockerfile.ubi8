@@ -1,0 +1,6 @@
+FROM registry.redhat.io/ubi8:8.6-754
+
+ARG WORKSPACE
+
+RUN ln -s ${WORKSPACE}/build-info.conf /etc/dnf/plugins/. && \
+    ln -s ${WORKSPACE}/build-info.py /usr/lib/python3.6/site-packages/dnf-plugins/.
