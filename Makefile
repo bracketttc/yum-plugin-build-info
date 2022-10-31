@@ -15,4 +15,4 @@ clean:
 	@rm -rf BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
 
 lint:
-	@rpmlint build-info.py $$(find . -name \*.rpm)
+	@rpmlint build-info.spec $$(find . -name \*.rpm)
