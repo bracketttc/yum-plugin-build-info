@@ -1,2 +1,8 @@
 *.json
 /venv
+/BUILD
+/BUILDROOT
+/RPMS
+/SOURCES
+/SPECS
+/SRPMS
