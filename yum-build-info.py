@@ -19,6 +19,7 @@ plugin_type = TYPE_CORE
 
 build_info_file = None
 
+
 def config_hook(conduit):
     # Add a 'collect_build_info' boolean setting to yum.conf [main]
     config.YumConf.collect_build_info = config.BoolOption(False)
@@ -30,16 +31,10 @@ def config_hook(conduit):
         dest="bi_file",
         action="store",
         default="build-info.json",
-        help="File to store build info data"
+        help="File to store build info data",
     )
 
-    parser.add_option(
-        "",
-        "--module",
-        dest="bi_module",
-        action="store",
-        help=""
-    )
+    parser.add_option("", "--module", dest="bi_module", action="store", help="")
 
 
 def pretrans_hook(conduit):
@@ -53,9 +48,9 @@ def pretrans_hook(conduit):
 
     build_info = {}
 
-    if os.path.exists( build_info_file ):
-        with open( build_info_file, 'r' ) as f:
-            build_info = json.load( f )
+    if os.path.exists(build_info_file):
+        with open(build_info_file, "r") as f:
+            build_info = json.load(f)
     else:
         build_info = {"dependencies": []}
 
@@ -105,10 +100,11 @@ def pretrans_hook(conduit):
 
     build_info["dependencies"].sort(key=lambda x: x["id"])
 
-    with open( build_info_file, 'w' ) as f:
-        json.dump( build_info, f, indent=4, sort_keys=True)
+    with open(build_info_file, "w") as f:
+        json.dump(build_info, f, indent=4, sort_keys=True)
+
 
 def close_hook(conduit):
     global build_info_file
     if build_info_file:
-        conduit.info( 2 , "Build info written to {}".format( build_info_file ) )
+        conduit.info(2, "Build info written to {}".format(build_info_file))

@@ -2,5 +2,7 @@ FROM registry.redhat.io/ubi8:8.6-754
 
 ARG WORKSPACE
 
+RUN dnf install -y git
+
 RUN ln -s ${WORKSPACE}/build-info.conf /etc/dnf/plugins/. && \
-    ln -s ${WORKSPACE}/build-info.py /usr/lib/python3.6/site-packages/dnf-plugins/.
+    ln -s ${WORKSPACE}/dnf-build-info.py /usr/lib/python3.6/site-packages/dnf-plugins/build-info.py

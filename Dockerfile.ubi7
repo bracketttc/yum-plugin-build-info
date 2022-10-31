@@ -3,4 +3,4 @@ FROM registry.redhat.io/ubi7:7.9-712
 ARG WORKSPACE
 
 RUN ln -s ${WORKSPACE}/build-info.conf /etc/yum/pluginconf.d/. && \
-    ln -s ${WORKSPACE}/build-info.py /usr/lib/yum-plugins/.
+    ln -s ${WORKSPACE}/yum-build-info.py /usr/lib/yum-plugins/build-info.py
