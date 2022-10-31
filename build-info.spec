@@ -23,7 +23,9 @@ BuildRequires: python3-rpm-macros
 %endif
 
 %description
-
+Yum/DNF plugin that generates the dependencies portion of a build-info file.
+This file is used in JFrog tools to connect build dependencies to specific
+artifacts in JFrog Artifactory.
 
 %prep
 %setup -q -n yum-plugin-build-info-%{version}
