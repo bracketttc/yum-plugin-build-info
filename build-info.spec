@@ -4,7 +4,7 @@
 %define configdir /etc/yum/pluginconf.d/
 %else
 %define yum dnf
-%define plugindir %{_exec_prefix}/lib/python3.6/site-packages/dnf-plugins/
+%define plugindir %{python3_sitelib}/dnf-plugins/
 %define configdir /etc/dnf/plugins/
 %endif
 
@@ -18,6 +18,9 @@ URL: https://github.com/bracketttc/yum-plugin-build-info
 Source0: https://github.com/bracketttc/yum-plugin-build-info/archive/refs/tags/v%{version}.tar.gz
 
 Requires: %{yum}
+%if "%{rhel}" == "7"
+BuildRequires: python3-rpm-macros
+%endif
 
 %description
 
