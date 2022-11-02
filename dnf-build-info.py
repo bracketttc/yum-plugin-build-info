@@ -81,10 +81,7 @@ class BuildInfoAction(dnf.Plugin):
         # Add dependency information to JSON
         for tsi in ts_info:
             pkg_id = os.path.basename(tsi.pkg.localPkg())
-
-            print("Package:", tsi.pkg.name)
-            print("Version:", tsi.pkg.version)
-
+            
             # dedup list
             reqs = set(tsi.pkg.requires)
             deps = []
